@@ -166,8 +166,6 @@ Insert picture
     Once the ALB is provisioned, the website can now be accessed by the DNS name of the ALB. This domain name can be  updated in the word press settings as well by    appending wp-admin to the domain name on the address bar.
    Now, the set up server in the public subnet can be terminated.
    
-   
-   
    Create an Autoscaling Group
    
    This is done to dynamically scale the infrastructure. 
@@ -177,6 +175,16 @@ Insert picture
    4)In the user data section,I added the same script I used while creating the webservers.
    5)Once launch template is created, create the Auto scaling group.
    6)I named the group as Dev ASG and selected the created Dev launch template.
+   7)Select the Dev VPC and for subnets select the Private AppSubnet AZ1 and Private AppSubnet AZ2.
+   8) I then attached the group to the load balancer and selected the Dev TG.
+   9) For health checks, select the health check type as ELB and timeout 300 seconds.
+   10) For the group canacity, I selected the desired as 2, minimum as 1 and maximum as 4.
+   11) Next, I added a notification as well and created an SNS topic and left all the event types checked.
+   12) Also, add the tag as ASG-Webservers.
+   13) Once the group is successfully created, I had two EC2 instances running , launched by the auto scaling group, can be verified by the tag name ASG-Webservers.
+
+Now the website is up and running again.
+   
     
 
     
