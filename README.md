@@ -134,6 +134,9 @@ I have created the following security groups for this project :
     
     Now on pasting my ec2 public ip4 on a new tab , I could see the wordpress site.
     
+    ![image](https://user-images.githubusercontent.com/31481968/231810316-5fbd0a4a-40f0-4614-b825-2db17721e64e.png)
+
+    
     
     Launch EC2 instances in private subnet:
     1. Create EC2s in Private subnet 1 and 2 with webserver SG , with following user data script. The user data script has the same commands which were used to install wordpress on the setup server:
