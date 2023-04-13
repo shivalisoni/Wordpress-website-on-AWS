@@ -154,7 +154,7 @@ I have created the following security groups for this project :
     sudo yum install mysql-community-server -y
     sudo systemctl enable mysqld
     sudo systemctl start mysqld
-    echo "fs-03c9b3354880b36a6.efs.us-east-1.amazonaws.com:/ /var/www/html nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
+    echo "fs-08ff251ea27998388.efs.us-east-1.amazonaws.com:/ /var/www/html nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
     mount -a
     chown apache:apache -R /var/www/html
     sudo service httpd restart
@@ -163,14 +163,17 @@ I have created the following security groups for this project :
     Also select the created key pair while launching the instances.
     
     Create Application Load Balancer:
-    1. Create Target Group called Dev TG, select the protocol as HTTP and choose Dev VPC, register the two instances (Webserver AZ1 and Webserver AZ2) as the targets.
-    2. Now create the application load balancer, I named it Dev ALB. Its an internet facing type with ip address type ipv4.
+    1. Create Target Group called DevTG, select the protocol as HTTP and choose Dev VPC, register the two instances (Webserver AZ1 and Webserver AZ2) as the targets.
+    2. Now create the application load balancer, I named it DevALB. Its an internet facing type with ip address type ipv4.
     3. Select the Dev VPC and the availability zones us-east1-a (then the public subnet AZ1 ) and us-east1-b (then the public subnet AZ2 ).
     4. Select the ALB SG for the security groups.
-    5. Add HTTp listener and select the Dec TG for the target group.
+    5. Add HTTp listener and select the DevTG for the target group.
     
     Once the ALB is provisioned, the website can now be accessed by the DNS name of the ALB. This domain name can be  updated in the word press settings as well by    appending wp-admin to the domain name on the address bar.
    Now, the set up server in the public subnet can be terminated.
+   ![image](https://user-images.githubusercontent.com/31481968/231822467-42bd8fa9-668e-4626-9a04-e898a174dc15.png)
+
+   
    
    Create an Autoscaling Group
    
