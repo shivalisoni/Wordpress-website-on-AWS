@@ -38,17 +38,17 @@ The NAT Gateway allows the instances in the private app and data subnets to acce
 Security Groups
 I have created the following security groups for this project :
 1) ALB SG : For the application load balancer, with following rules :
-![image](https://user-images.githubusercontent.com/31481968/231736465-d131388f-55f4-40de-a726-7b4b78747eb5.png)
+ ![image](https://user-images.githubusercontent.com/31481968/231736465-d131388f-55f4-40de-a726-7b4b78747eb5.png)
 2) SSH SG : To allow the SSH traffic from my own IP:
-  Insert
+ ![image](https://user-images.githubusercontent.com/31481968/231736997-77c3c009-e4f0-4ba0-870e-b03c5208f3a6.png)
 3) Webserver SG : To allow the traffic from application load balancer :
-   Insert
+ ![image](https://user-images.githubusercontent.com/31481968/231737708-be5bc331-c49f-400e-bb9f-f912231ee042.png)
 4) Database SG : To allow the traffic from the webserver:
-   Insert
+ ![image](https://user-images.githubusercontent.com/31481968/231738084-5497bc20-8a9f-4f43-82ad-5cac12c45301.png)
 5) EFS SG  : To allow the NFS traffic from webserver , SSH traffic from my own IP and NFS traffic from the EFS SG itself. By allowing the security group to contact itself,  a permission is created for the resources within the security group to communicate with the EFS file system. 
-   Insert
-   
-   
+ ![image](https://user-images.githubusercontent.com/31481968/231739071-ccf32264-08f8-4f43-8a1a-0c45893ca849.png)
+
+      
    RDS 
    RDS instances need to be created in the private data subnets.
    1) First I craeted a subnet group, which defines in which subnet I want my RDS inatances. While creating that, select oth the AZs and the private data subnets in the respective AZs.
