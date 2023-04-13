@@ -50,15 +50,18 @@ I have created the following security groups for this project :
 
       
    RDS 
+   
    RDS instances need to be created in the private data subnets.
-   1) First I craeted a subnet group, which defines in which subnet I want my RDS inatances. While creating that, select oth the AZs and the private data subnets in the respective AZs.
-   2) Then create database using MySQL 5.7.36. I did not want to go out of free tier hence I chose not to create a stand by database and chose the Single DB instance option. For the DB instance class option, I chose burstable class option.
-   3)  Choose the dev VPC and the correct subnet group created and also remove all other SGs if attached and only attach the DB SG. For the availability zone, O chose us-east1b to create my master DB isntance. 
+   1) First I created a subnet group, which defines in which subnet I want my RDS instances. While creating that, select the AZs and the private data subnets in the respective AZs.
+   2) Then create database using MySQL 5.7.37. I did not want to go out of free tier hence I chose not to create a stand by database and chose the Single DB instance option. For the DB instance class option, I chose burstable class option.
+   3)  Choose the dev VPC and the correct subnet group created and also remove all other SGs if attached and only attach the DB SG. For the availability zone, I chose us-east1b to create my master DB isntance. 
    4)  Then, go to additional configuration and give the db a name.
    
    
    Elastic File System
    I have created an EFS called the Dev EFS, so that the web servers can have access to the shared files. The EFS mount targets are in each AZ . The webserves will use the mount target to connect to the EFS.
+   This EFS used, will allow the webservers to pull the application code and configuration files from the same location.
+   To create, cgo yo EFS, click on create EFS and then select customize.
    While mounting targets, select the Dev VPC and the two AZs and private datasubnets of the respective AZs. Remove the default security groups and attach the EFS security groups to the targets.
    
    SSH Into EC2 Instances
